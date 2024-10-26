@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -29,9 +32,12 @@ public class ApiRest {
         return deportesRepository.findById(id);
     }
     
-    @GetMapping("/guardarDeporte/{id}/{nombre}")
-    public String getGuardarDeporte(@PathVariable Integer id, @PathVariable String nombre) {
-        return new String();
+    @PostMapping("/deporte/save")
+    public void postDeporteSave(@RequestBody Deportes deportes) {
+        deportesRepository.save(deportes) ;
     }
+    
+    
+   
     
 }
